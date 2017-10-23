@@ -1,0 +1,45 @@
+.example-container {
+    width: 500px;
+    height: 300px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+  }
+  
+  .example-sidenav-content {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .example-sidenav {
+    padding: 20px;
+  }
+  
+
+  .my-content{
+    display: flex;
+    flex-direction: row;
+   
+  }
+
+  .sidebar{
+    flex:1;
+  }
+
+  .content-inner{
+    display: flex;
+    flex-wrap: wrap;
+    flex: 4;
+  }
+
+  .table-container {
+    display: flex;
+    flex-direction: column;
+    max-height: 500px;
+    min-width: 300px;
+  }
+  
+  .mat-table {
+    overflow: auto;
+    max-height: 500px;
+  }
