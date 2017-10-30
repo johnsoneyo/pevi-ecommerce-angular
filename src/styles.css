@@ -2,6 +2,7 @@
 
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
+
 body{
     margin:0;
 }
@@ -24,11 +25,12 @@ html, body, material-app, mat-sidenav-container, .my-content {
 
   .mat-list-item-content-reverse{
     flex-direction: unset !important;
+    height: 25px !important;
   }
 
   .cardyb {
    margin: 20px;
-   padding:0px !important;
+   padding:5px 0px !important;
    margin-top: 50px;
   }
 

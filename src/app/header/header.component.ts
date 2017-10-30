@@ -17,8 +17,13 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.pserv.getOrdersBroadcast().subscribe(data=>{
+      if(data!=undefined){
       this.cartItemCount = data.length;
       this.cartItems = data;
+      } else {
+        this.cartItems = [];
+        this.cartItemCount = 0.0;
+      }
     });
    
   }

@@ -21,10 +21,12 @@ import { ProductService } from './product.service';
 import {MatTabsModule} from '@angular/material';
 import {MatGridListModule} from '@angular/material';
 import {MatTableModule} from '@angular/material';
+import { StarRatingModule } from 'angular-star-rating';
 
 
 const appRoutes: Routes = [
   { path: '', component: ContentContainerComponent },
+  { path : 'assets/images/star-rating.icons.svg', redirectTo : 'http://localhost:4200/assets/images/star-rating.icons.svg'}
   
 ];
 
@@ -37,9 +39,8 @@ const appRoutes: Routes = [
     SidebarComponent,
     ContentComponent,
    ],
-  imports: [ RouterModule.forRoot(
-    appRoutes,
-    { enableTracing: true } // <-- debugging purposes only
+  imports: [  StarRatingModule.forRoot(), RouterModule.forRoot(
+    appRoutes
   ),
     BrowserModule,MatButtonModule,MatCheckboxModule,
     MatToolbarModule,MatSidenavModule,BrowserAnimationsModule,MatIconModule,

@@ -38,6 +38,11 @@ private orders:Order[];
     return this.orderObservable.asObservable();
   }
 
+  clearOrders():void{
+    this.orders = [];
+    this.orderObservable.next();
+  }
+
 
 
 }
