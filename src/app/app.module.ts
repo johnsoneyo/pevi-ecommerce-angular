@@ -22,11 +22,11 @@ import {MatTabsModule} from '@angular/material';
 import {MatGridListModule} from '@angular/material';
 import {MatTableModule} from '@angular/material';
 import { StarRatingModule } from 'angular-star-rating';
-
+import { BannerComponent } from './banner/banner.component';
+import {DropdownModule} from "ngx-dropdown";
 
 const appRoutes: Routes = [
-  { path: '', component: ContentContainerComponent },
-  { path : 'assets/images/star-rating.icons.svg', redirectTo : 'http://localhost:4200/assets/images/star-rating.icons.svg'}
+  { path: '', component: ContentContainerComponent }
   
 ];
 
@@ -38,8 +38,9 @@ const appRoutes: Routes = [
     ContentContainerComponent,
     SidebarComponent,
     ContentComponent,
+    BannerComponent,
    ],
-  imports: [  StarRatingModule.forRoot(), RouterModule.forRoot(
+  imports: [ DropdownModule, StarRatingModule.forRoot(), RouterModule.forRoot(
     appRoutes
   ),
     BrowserModule,MatButtonModule,MatCheckboxModule,
