@@ -1,6 +1,6 @@
 import { Order } from "./order";
 
-export class AnonymousOrders{
+export class AnonymousOrder{
 
 fname:string;
 lname:string;

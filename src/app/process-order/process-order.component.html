@@ -1,14 +1,15 @@
+<form class="example-form" (ngSubmit)="onSubmit(order)" [formGroup]="order">
 <h2 mat-dialog-title>You can make orders without an account</h2>
 <mat-dialog-content>
   <mat-tab-group>
     <mat-tab label="Anonymous orders">
-      <form class="example-form">
+    
         <table class="example-full-width" cellspacing="0"><tr>
           <td><mat-form-field class="example-full-width">
-            <input  matInput placeholder="First name">
+            <input formControlName="fname"  matInput placeholder="First name">
           </mat-form-field></td>
           <td><mat-form-field class="example-full-width">
-            <input matInput placeholder="Last name">
+            <input formControlName="lname" matInput placeholder="Last name">
           </mat-form-field></td>
           
         </tr>
@@ -16,23 +17,22 @@
         <td>
             <mat-form-field class="example-full-width">
                 <span matPrefix>+234 &nbsp;</span>
-                <input type="tel" matInput placeholder="Telephone">
+                <input  formControlName="phone" type="tel" matInput placeholder="Telephone">
                 <mat-icon matSuffix>mode_edit</mat-icon>
               </mat-form-field>
       </td>
         <td><mat-form-field class="example-full-width">
-          <input matInput type="email" placeholder="Email">
+          <input  formControlName="email" matInput type="email" placeholder="Email">
         </mat-form-field></td>
       </tr>
       </table>
       
         <p>
           <mat-form-field class="example-full-width">
-            <textarea matInput placeholder="Address"></textarea>
+            <textarea  formControlName="address" matInput placeholder="Address"></textarea>
           </mat-form-field>
         
         </p>
-      </form>
       
     </mat-tab>
     <mat-tab label="Account orders">
@@ -42,7 +42,9 @@
   
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-button [mat-dialog-close]="true">Submit Order</button>
+  <button mat-button type="submit">Submit Order</button>
   <button mat-button mat-dialog-close>No</button>
 </mat-dialog-actions>
+</form>
+
 

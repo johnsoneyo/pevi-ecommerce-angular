@@ -116,6 +116,7 @@ export class ContentContainerComponent implements OnInit {
     let dialogRef = this.dialog.open(ProcessOrderComponent, {
       height: '500px',
       width: '700px',
+      data : this.orders
     });
 
     dialogRef.afterClosed().subscribe(result => {
