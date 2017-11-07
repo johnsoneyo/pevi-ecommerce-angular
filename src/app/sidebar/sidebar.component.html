@@ -1,6 +1,23 @@
+<mat-card class="cardyb">
+    <mat-card-content>
+     
+  
+      <mat-slider
+          class="example-margin"
+          [disabled]="disabled"
+          [invert]="invert"
+          [max]="max"
+          [min]="min"
+          [step]="step"
+          [thumb-label]="thumbLabel"
+          [tick-interval]="tickInterval"
+          [value]="value"
+          [vertical]="vertical">
+      </mat-slider>
+    </mat-card-content>
+  </mat-card>
 
 <mat-card class="cardyb">
-
 <mat-selection-list>
     <mat-list-option *ngFor="let staple of staples">
       {{staple}}

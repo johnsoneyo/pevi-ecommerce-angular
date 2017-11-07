@@ -28,7 +28,7 @@
            
             <div class="total-block">
                <button [disabled]="total==0" (click)="clearCart()" mat-raised-button color="primary">Clear Items</button>
-               <button [disabled]="total==0" mat-raised-button color="accent">Checkout</button>
+               <button [disabled]="total==0" (click)="processOrder()" mat-raised-button color="accent">Checkout</button>
                <span *ngIf="total>0">{{total}}</span>
             </div>
          

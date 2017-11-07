@@ -1,0 +1,48 @@
+<h2 mat-dialog-title>You can make orders without an account</h2>
+<mat-dialog-content>
+  <mat-tab-group>
+    <mat-tab label="Anonymous orders">
+      <form class="example-form">
+        <table class="example-full-width" cellspacing="0"><tr>
+          <td><mat-form-field class="example-full-width">
+            <input  matInput placeholder="First name">
+          </mat-form-field></td>
+          <td><mat-form-field class="example-full-width">
+            <input matInput placeholder="Last name">
+          </mat-form-field></td>
+          
+        </tr>
+      <tr>
+        <td>
+            <mat-form-field class="example-full-width">
+                <span matPrefix>+234 &nbsp;</span>
+                <input type="tel" matInput placeholder="Telephone">
+                <mat-icon matSuffix>mode_edit</mat-icon>
+              </mat-form-field>
+      </td>
+        <td><mat-form-field class="example-full-width">
+          <input matInput type="email" placeholder="Email">
+        </mat-form-field></td>
+      </tr>
+      </table>
+      
+        <p>
+          <mat-form-field class="example-full-width">
+            <textarea matInput placeholder="Address"></textarea>
+          </mat-form-field>
+        
+        </p>
+      </form>
+      
+    </mat-tab>
+    <mat-tab label="Account orders">
+    
+    </mat-tab>
+  </mat-tab-group>
+  
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="true">Submit Order</button>
+  <button mat-button mat-dialog-close>No</button>
+</mat-dialog-actions>
+

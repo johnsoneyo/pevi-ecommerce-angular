@@ -7,6 +7,8 @@ import { DataSource } from '@angular/cdk/collections';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import { OrderDataSource } from '../order-datasource';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { ProcessOrderComponent } from '../process-order/process-order.component';
 
 @Component({
   selector: 'app-content-container',
@@ -21,7 +23,7 @@ export class ContentContainerComponent implements OnInit {
   public orders: Order[];
   public total:number = 0.0;
   
-  constructor(private service: NavserviceService,private serve :ProductService) {
+  constructor(private service: NavserviceService,private serve :ProductService,public dialog: MatDialog) {
 
   }
 
@@ -108,6 +110,20 @@ export class ContentContainerComponent implements OnInit {
     this.serve.clearOrders();
   }
 
+
+  processOrder():void {
+
+    let dialogRef = this.dialog.open(ProcessOrderComponent, {
+      height: '500px',
+      width: '700px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+     
+    });
+
+  }
  
 }
 

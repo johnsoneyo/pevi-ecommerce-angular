@@ -24,9 +24,21 @@ import {MatTableModule} from '@angular/material';
 import { StarRatingModule } from 'angular-star-rating';
 import { BannerComponent } from './banner/banner.component';
 import {DropdownModule} from "ngx-dropdown";
+import { AdminComponent } from './admin/admin.component';
+import {MatSliderModule, MatDialog, MatDialogModule} from '@angular/material';
 
-const appRoutes: Routes = [
-  { path: '', component: ContentContainerComponent }
+import { LoginComponent } from './admin/login/login.component';
+import { ProcessOrderComponent } from './process-order/process-order.component';
+import { MainComponent } from './main/main.component';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+
+const appRoutes: Routes = [{path : 'login',component:LoginComponent},
+ 
+    {path: '',component: MainComponent,children :[
+      {path:'',component: ContentContainerComponent,outlet:"main"}
+    ]}
+ 
   
 ];
 
@@ -39,11 +51,18 @@ const appRoutes: Routes = [
     SidebarComponent,
     ContentComponent,
     BannerComponent,
+    AdminComponent,
+    LoginComponent,
+    ProcessOrderComponent,
+    MainComponent,
    ],
+     entryComponents: [
+    ProcessOrderComponent
+  ],
   imports: [ DropdownModule, StarRatingModule.forRoot(), RouterModule.forRoot(
     appRoutes
   ),
-    BrowserModule,MatButtonModule,MatCheckboxModule,
+    ReactiveFormsModule,FormsModule,MatDialogModule,MatSliderModule,BrowserModule,MatButtonModule,MatCheckboxModule,
     MatToolbarModule,MatSidenavModule,BrowserAnimationsModule,MatIconModule,
     MatListModule,MatCardModule,MatInputModule,MatTabsModule,MatGridListModule,
     MatTableModule
