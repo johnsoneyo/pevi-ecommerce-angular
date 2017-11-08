@@ -6,7 +6,6 @@ import { ProductService } from '../product.service';
 import { DataSource } from '@angular/cdk/collections';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
-import { OrderDataSource } from '../order-datasource';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { ProcessOrderComponent } from '../process-order/process-order.component';
 

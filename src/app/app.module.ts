@@ -32,6 +32,9 @@ import { ProcessOrderComponent } from './process-order/process-order.component';
 import { MainComponent } from './main/main.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { Http, XHRBackend, RequestOptions, HttpModule } from '@angular/http';
+import { httpFactory } from './services/http.factory';
+import { OrderService } from './services/order.service';
 
 const appRoutes: Routes = [{path : 'login',component:LoginComponent},
  
@@ -62,12 +65,16 @@ const appRoutes: Routes = [{path : 'login',component:LoginComponent},
   imports: [ DropdownModule, StarRatingModule.forRoot(), RouterModule.forRoot(
     appRoutes
   ),
-    ReactiveFormsModule,FormsModule,MatDialogModule,MatSliderModule,BrowserModule,MatButtonModule,MatCheckboxModule,
+    HttpModule,ReactiveFormsModule,FormsModule,MatDialogModule,MatSliderModule,BrowserModule,MatButtonModule,MatCheckboxModule,
     MatToolbarModule,MatSidenavModule,BrowserAnimationsModule,MatIconModule,
     MatListModule,MatCardModule,MatInputModule,MatTabsModule,MatGridListModule,
     MatTableModule
   ],
-  providers: [NavserviceService,ProductService],
+  providers: [ {
+    provide: Http,
+    useFactory: httpFactory,
+    deps: [XHRBackend, RequestOptions]
+},NavserviceService,ProductService,OrderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
