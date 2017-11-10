@@ -23,7 +23,8 @@ export class ProcessOrderComponent implements OnInit {
     this.order = new FormGroup({
       fname: new FormControl('',Validators.required),
       lname: new FormControl('',Validators.required),
-      phone: new FormControl('',[Validators.required,Validators.pattern('[A-Za-z]{5}')]),
+      phone: new FormControl('',[Validators.required,
+        Validators.pattern('^0[1-9][0-9]{9}$|^[1-9][0-9]{9}$|^[+]234[1-9][0-9]{9}$')]),
       email: new FormControl('',Validators.required),
       address: new FormControl('',Validators.required),
     });
@@ -34,7 +35,11 @@ export class ProcessOrderComponent implements OnInit {
 
   onSubmit({ value, valid }: { value: AnonymousOrder, valid: boolean }) {
      value.orders = this.data;
-     this.orderService.processOrders(value);
+      this.serve.clearOrders();
+      this.orderService.processOrders(value).
+      subscribe(data=>{
+        console.log(data)
+      });
      
   }
 

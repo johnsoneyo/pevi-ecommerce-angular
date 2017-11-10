@@ -10,8 +10,7 @@ export class OrderService {
 
 
   processOrders(orders : AnonymousOrder): Observable<any> {
-
-    return  this.http.post('/processOrder',orders);
+    return  this.http.post('api/orders/saveOrder',orders);
 
   }
 

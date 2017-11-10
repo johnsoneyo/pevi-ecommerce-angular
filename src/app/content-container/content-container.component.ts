@@ -1,4 +1,4 @@
-import { Component, OnInit,Output, ViewChild, EventEmitter } from '@angular/core';
+import { Component, OnInit,Output, ViewChild, EventEmitter, Input } from '@angular/core';
 import { NavserviceService } from '../navservice.service';
 import {Product} from '../product';
 import { Order } from '../order';
@@ -6,8 +6,9 @@ import { ProductService } from '../product.service';
 import { DataSource } from '@angular/cdk/collections';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatIconRegistry} from '@angular/material';
 import { ProcessOrderComponent } from '../process-order/process-order.component';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-content-container',
@@ -19,12 +20,25 @@ export class ContentContainerComponent implements OnInit {
   @ViewChild("sidenav") sidenav;
   isOpen:boolean;
 
+  @Input()
+  cartMultiply = 'cancel';
+  @Input()
+  cartCheckout = 'checkout';
+
   public orders: Order[];
   public total:number = 0.0;
   
-  constructor(private service: NavserviceService,private serve :ProductService,public dialog: MatDialog) {
+  constructor(private service: NavserviceService,
+    private serve :ProductService,public dialog: MatDialog, private matIconRegistry: MatIconRegistry,
+    sanitizer: DomSanitizer)
+    {  
+        matIconRegistry
+        .addSvgIcon('cancel',
+        sanitizer.bypassSecurityTrustResourceUrl('assets/images/Cartmultiply.svg'))
+        .addSvgIcon('checkout',
+        sanitizer.bypassSecurityTrustResourceUrl('assets/images/Cart.svg'));
+    }
 
-  }
 
   ngOnInit() {
    this.service.change.subscribe(data=>{

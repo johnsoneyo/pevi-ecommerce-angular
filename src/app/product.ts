@@ -4,7 +4,8 @@ export class Product {
 
 id:number;
 name:string;
-productCount:number;
+alias:string;
+inventorySize:number;
 imageUrl:string;
 price:number;
 description;

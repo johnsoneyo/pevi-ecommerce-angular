@@ -1,7 +1,9 @@
-import { Component, OnInit, EventEmitter, Output ,ViewChild} from '@angular/core';
+import { Component, OnInit, EventEmitter, Output ,ViewChild, Input} from '@angular/core';
 import { NavserviceService } from '../navservice.service';
 import { ProductService } from '../product.service';
 import { Order } from '../order';
+import { DomSanitizer } from '@angular/platform-browser';
+import { MatIconRegistry } from '@angular/material';
 
 @Component({
   selector: 'app-header',
@@ -10,10 +12,26 @@ import { Order } from '../order';
 })
 export class HeaderComponent implements OnInit {
  
+  @Input()
+  lightIcon = 'cartGrill';
+  
+  @Input()
+  lightBag = 'lightBag';
+
+
   public cartItemCount:number;
   public cartItems: Order[];
 
-  constructor(private service: NavserviceService,private pserv: ProductService) { }
+  constructor(private service: NavserviceService,private pserv: ProductService,
+    private matIconRegistry: MatIconRegistry,
+    sanitizer: DomSanitizer) { 
+
+      matIconRegistry
+      .addSvgIcon('cartGrill',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/images/Cartgrill.svg'))
+      .addSvgIcon('lightBag',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/images/Bagremove.svg'));
+    }
 
   ngOnInit() {
     this.pserv.getOrdersBroadcast().subscribe(data=>{

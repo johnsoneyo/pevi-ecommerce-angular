@@ -35,6 +35,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { Http, XHRBackend, RequestOptions, HttpModule } from '@angular/http';
 import { httpFactory } from './services/http.factory';
 import { OrderService } from './services/order.service';
+import { HttpService } from './services/http.service';
 
 const appRoutes: Routes = [{path : 'login',component:LoginComponent},
  
@@ -65,13 +66,13 @@ const appRoutes: Routes = [{path : 'login',component:LoginComponent},
   imports: [ DropdownModule, StarRatingModule.forRoot(), RouterModule.forRoot(
     appRoutes
   ),
-    HttpModule,ReactiveFormsModule,FormsModule,MatDialogModule,MatSliderModule,BrowserModule,MatButtonModule,MatCheckboxModule,
+    ReactiveFormsModule,FormsModule,MatDialogModule,MatSliderModule,BrowserModule,MatButtonModule,MatCheckboxModule,
     MatToolbarModule,MatSidenavModule,BrowserAnimationsModule,MatIconModule,
     MatListModule,MatCardModule,MatInputModule,MatTabsModule,MatGridListModule,
-    MatTableModule
+    MatTableModule,HttpModule
   ],
   providers: [ {
-    provide: Http,
+    provide: HttpService,
     useFactory: httpFactory,
     deps: [XHRBackend, RequestOptions]
 },NavserviceService,ProductService,OrderService],

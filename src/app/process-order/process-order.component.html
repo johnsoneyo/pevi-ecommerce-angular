@@ -8,13 +8,11 @@
           <td>
             <mat-form-field class="example-full-width">
             <input formControlName="fname"  matInput placeholder="First name" required> 
-                <div [hidden]="!order.controls['fname'].errors.required"></div>
-            </mat-form-field>
+               </mat-form-field>
         </td>
           <td><mat-form-field class="example-full-width">
             <input formControlName="lname" matInput placeholder="Last name" required>
-            <div [hidden]="!order.controls['lname'].errors.required"></div>
-          </mat-form-field></td>
+           </mat-form-field></td>
           
         </tr>
       <tr>
@@ -22,20 +20,18 @@
             <mat-form-field class="example-full-width">
                 <span matPrefix>+234 &nbsp;</span>
                 <input  formControlName="phone" type="tel" matInput  required>
-                <div [hidden]="!order.controls['phone'].errors.required"></div>
-                <mat-icon matSuffix>mode_edit</mat-icon>
+                 <mat-icon matSuffix>mode_edit</mat-icon>
               </mat-form-field>
       </td>
         <td><mat-form-field class="example-full-width">
           <input  formControlName="email" matInput type="email"  required> 
-          <div [hidden]="!order.controls['email'].errors.required"></div>
-        </mat-form-field></td>
+         </mat-form-field></td>
       </tr>
       </table>
       
         <p>
           <mat-form-field class="example-full-width">
-            <textarea  formControlName="address" matInput placeholder="Address" required></textarea>
+            <textarea  formControlName="address" matInput placeholder="Delivery Address" required></textarea>
           </mat-form-field>
         
         </p>
@@ -48,7 +44,7 @@
   
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-button type="submit">Submit Order</button>
+  <button mat-button [disabled]="!order.valid" type="submit">Submit Order</button>
   <button mat-button mat-dialog-close>No</button>
 </mat-dialog-actions>
 </form>
