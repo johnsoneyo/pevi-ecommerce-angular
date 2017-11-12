@@ -21,16 +21,10 @@
 
 <mat-card class="cardyb">
 <mat-selection-list>
-    <mat-list-option *ngFor="let staple of staples">
-      {{staple}}
-    </mat-list-option>
-  </mat-selection-list>
+    <mat-list-option  [value]="cat.id" (click)="modelChanged($event)" *ngFor="let cat of categories">
+      {{cat.name}}
+    </mat-list-option>  
+     
+</mat-selection-list>
 </mat-card>
 
-<mat-card class="cardyb">
-        <mat-selection-list >
-            <mat-list-option *ngFor="let veg of vegetables">
-              {{veg}}
-            </mat-list-option>
-          </mat-selection-list>
-        </mat-card>

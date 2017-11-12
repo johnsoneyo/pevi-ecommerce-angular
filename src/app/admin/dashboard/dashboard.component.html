@@ -1,0 +1,24 @@
+<mat-sidenav-container class="example-container">
+    <mat-toolbar color="primary">
+        <button (click)="openMenu()" mat-icon-button>
+            <mat-icon >menu</mat-icon>
+          </button>
+          <button mat-button >
+              <mat-icon>logout</mat-icon>
+          </button>
+    </mat-toolbar>
+  <mat-sidenav #sidenav class="example-sidenav">
+      <mat-toolbar color="primary">
+           <mat-toolbar-row>
+              </mat-toolbar-row>
+      </mat-toolbar>
+      <mat-nav-list>
+          <a mat-list-item routerLink="{{link.go}}" *ngFor="let link of links"> {{link.title }} </a>
+       </mat-nav-list>
+       
+        
+  </mat-sidenav>
+
+  <router-outlet></router-outlet>
+
+</mat-sidenav-container>

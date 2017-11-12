@@ -46,4 +46,12 @@ export class ContentComponent implements OnInit {
   }
 
 
+  getProductImage(pid:number){
+    this.pserve.getProductImage(pid).subscribe(img=>{
+
+    });
+
+  }
+
+
 }

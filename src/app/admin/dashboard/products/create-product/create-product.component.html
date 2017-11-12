@@ -1,0 +1,32 @@
+<form class="example-form" (ngSubmit)="onSubmit(item)" [formGroup]="item">
+  <mat-form-field class="example-full-width">
+    <input formControlName="name" matInput placeholder="Item Name">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input formControlName="alias" matInput placeholder="Item Alias">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <textarea formControlName="description" matInput placeholder="Item description"></textarea>
+  </mat-form-field>
+  
+
+  <table class="example-full-width" cellspacing="0"><tr>
+    <td><mat-form-field >
+      <mat-select formControlName="categoryId" placeholder="Category">
+        <mat-option  *ngFor="let cat of categories" [value]="cat.id">
+          {{ cat.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field></td>
+    <td><mat-form-field class="example-full-width">
+      <input matInput formControlName="inventorySize" type="number" placeholder="Inventory Size">
+    </mat-form-field></td>
+    <td><mat-form-field class="example-full-width">
+      <input matInput formControlName="price" type="number" placeholder="Price">
+    </mat-form-field></td>
+  </tr></table>
+
+
+    <button mat-button color="primary">Create Item</button>
+  
+</form>

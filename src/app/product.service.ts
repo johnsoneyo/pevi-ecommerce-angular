@@ -4,6 +4,9 @@ import { Product } from './product';
 import { Observable } from 'rxjs/Observable';
 import { Order } from './order';
 import { HttpService } from './services/http.service';
+import { Category } from './models/category';
+import { ProductFilter } from './models/product.filter';
+import { Item } from './models/item';
 
 @Injectable()
 export class ProductService {
@@ -26,6 +29,14 @@ private orders:Order[];
 
   getProductsByRange(from:number,to:number):Observable<any>{
     return this.http.get('api/product/getProductByRange/'+from+'/'+to);
+  }
+
+  getProductsByCategories(cats:ProductFilter):Observable<any>{
+    return this.http.post('api/product/getProductsV2',cats).map(res=>res.json());
+  }
+
+  getCategories():Observable<any>{
+    return this.http.get('api/category/getCategories').map(res=> res.json());
   }
 
   getBroadcast():Observable<any>{
@@ -52,6 +63,14 @@ private orders:Order[];
     this.orderObservable.next();
   }
 
+
+  getProductImage(productId:number):Observable<any>{
+    return this.http.get('api/product/getProductImage/'+productId).map(res=>res.json());
+  }
+
+  saveProduct(pdt:Item):Observable<any>{
+    return this.http.post('api/product/saveProduct',pdt);
+  }
 
 
 }

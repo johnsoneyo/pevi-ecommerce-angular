@@ -1,8 +1,10 @@
-import { Component, OnInit, Output,EventEmitter, Input } from '@angular/core';
-import { MatSliderChange, MatIconRegistry } from '@angular/material';
+import { Component, OnInit,AfterViewInit,OnChanges, Output,EventEmitter, Input, SimpleChanges, ViewChildren, QueryList } from '@angular/core';
+import { MatSliderChange, MatIconRegistry, MatSelectionListOptionEvent, MatListOption } from '@angular/material';
 import { ProductService } from '../product.service';
 import { Product } from '../product';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Category } from '../models/category';
+import { ProductFilter } from '../models/product.filter';
 
 @Component({
   selector: 'app-sidebar',
@@ -21,13 +23,14 @@ export class SidebarComponent implements OnInit {
   thumbLabel = true;
   value = 0;
   vertical = false;
+  selectValue;
 
   @Output() 
   change :EventEmitter<MatSliderChange> = new EventEmitter<MatSliderChange>();
-  products: Product[];
+    products: Product[];
 
-public staples:string [] = ['Yam','Potatoes','Rice','Flour'];
-public vegetables:string [] = ['Ugwu','Water-leaf','Efirin','Alubosa'];
+public categories: Category[];
+@ViewChildren(MatListOption) options: QueryList<MatListOption>;
 
 @Input()
 lightIcon = 'green';
@@ -39,14 +42,34 @@ lightIcon = 'green';
         matIconRegistry
         .addSvgIcon('green',
         sanitizer.bypassSecurityTrustResourceUrl('assets/images/Economies.svg'));
+
+        pserve.getCategories().subscribe(cat=>{
+           this.categories = cat;
+        });
+    }
+    
+
+    modelChanged(evt){
+      let catInt:number[] = [];
+      for(let cat of this.options.toArray()){
+           if(cat._selected){
+            catInt.push(cat.value);     
+           }       
+      }
+      let pf = new ProductFilter();
+      pf.categories = catInt;
+      this.pserve.getProductsByCategories(pf).subscribe(data=>{
+        console.log(data);
+        this.pserve.setProducthardcoded(data);
+      });
     }
 
+    ngOnInit(){
 
+    }
 
-  ngOnInit() {
-  }
-
-
+  
+ 
   changed($event){
      this.pserve.setProducthardcoded(this.products);
      this.pserve.getProductsByRange(this.min,$event.value).
@@ -54,5 +77,8 @@ lightIcon = 'green';
         this.pserve.setProducthardcoded(sub);
      });
   }
+
+  
+
 
 }
