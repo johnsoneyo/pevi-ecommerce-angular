@@ -7,6 +7,7 @@ import { ProductDataSource } from './product.datasource';
 import { MatDialog } from '@angular/material';
 import { CreateProductComponent } from './create-product/create-product.component';
 import { NavserviceService } from '../../../navservice.service';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-products',
@@ -42,6 +43,13 @@ export class ProductsComponent implements OnInit {
     
     });
   }
+
+ editDialog(value):void {
+   let dialogRef = this.dialog.open(CreateProductComponent, {
+    width: '600px',height:'400px',data:value
+  });
+
+ }
 
 
 }

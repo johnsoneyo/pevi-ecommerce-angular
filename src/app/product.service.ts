@@ -8,6 +8,7 @@ import { Category } from './models/category';
 import { ProductFilter } from './models/product.filter';
 import { Item } from './models/item';
 
+
 @Injectable()
 export class ProductService {
 
@@ -70,6 +71,10 @@ private orders:Order[];
 
   saveProduct(pdt:Item):Observable<any>{
     return this.http.post('api/product/saveProduct',pdt);
+  }
+
+  modifyProduct(pdt:Item):Observable<any>{
+    return this.http.post('api/product/modifyProduct',pdt);
   }
 
 
