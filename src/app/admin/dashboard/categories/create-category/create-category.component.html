@@ -1,0 +1,15 @@
+<form class="example-form" (ngSubmit)="onSubmit(cat)" [formGroup]="cat">
+    <mat-form-field class="example-full-width">
+      <input formControlName="name" matInput placeholder="Category Name">
+    </mat-form-field>
+ 
+    <mat-form-field class="example-full-width">
+      <textarea formControlName="description" matInput placeholder="Category  description"></textarea>
+    </mat-form-field>
+    
+
+  
+      <button mat-button  color="primary">Save</button>
+     
+    
+  </form>

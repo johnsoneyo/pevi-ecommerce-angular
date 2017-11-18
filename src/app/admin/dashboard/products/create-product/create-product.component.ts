@@ -23,7 +23,6 @@ export class CreateProductComponent implements OnInit {
   ngOnInit() {
 
     this.createMode = true;
-
     this.pserve.getCategories().subscribe(res => {
       this.categories = res;
     });

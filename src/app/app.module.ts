@@ -43,6 +43,7 @@ import { ProductsComponent } from './admin/dashboard/products/products.component
 import { CategoriesComponent } from './admin/dashboard/categories/categories.component';
 import { CreateProductComponent } from './admin/dashboard/products/create-product/create-product.component';
 import {MatSelectModule} from '@angular/material';
+import { CreateCategoryComponent } from './admin/dashboard/categories/create-category/create-category.component';
 
 const appRoutes: Routes = [{ path: 'login', component: LoginComponent },
 {
@@ -77,9 +78,10 @@ export const appRoutingProviders: any[] = [];
     ProductsComponent,
     CategoriesComponent,
     CreateProductComponent,
+    CreateCategoryComponent,
   ],
   entryComponents: [
-    ProcessOrderComponent,CreateProductComponent
+    ProcessOrderComponent,CreateProductComponent,CreateCategoryComponent
   ],
   imports: [DropdownModule, StarRatingModule.forRoot(), RouterModule.forRoot(
     appRoutes

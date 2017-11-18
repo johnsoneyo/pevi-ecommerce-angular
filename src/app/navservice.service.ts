@@ -4,6 +4,7 @@ import { Injectable,EventEmitter } from '@angular/core';
 export class NavserviceService {
   public change:EventEmitter<any>  = new EventEmitter<any>();
   public updateProducts:EventEmitter<any>  = new EventEmitter<any>();
+  public updateCategories:EventEmitter<any>  = new EventEmitter<any>();
   
   constructor() { }
 

@@ -77,5 +77,10 @@ private orders:Order[];
     return this.http.post('api/product/modifyProduct',pdt);
   }
 
+  saveCategory(pdt:Category):Observable<any>{
+    return this.http.post('api/category/saveCategory',pdt);
+  }
+
+
 
 }
