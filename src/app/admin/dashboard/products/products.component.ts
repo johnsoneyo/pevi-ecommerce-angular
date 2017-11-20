@@ -8,6 +8,7 @@ import { MatDialog } from '@angular/material';
 import { CreateProductComponent } from './create-product/create-product.component';
 import { NavserviceService } from '../../../navservice.service';
 import { FormGroup } from '@angular/forms';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-products',
@@ -20,7 +21,7 @@ export class ProductsComponent implements OnInit {
 
   constructor(private service: ProductService,public dialog: MatDialog,private navSrv:NavserviceService) { }
 
-  displayedColumns = ['id', 'name', 'description', 'price','actions'];
+  displayedColumns = ['id','photo', 'name', 'description', 'price','actions'];
   dataSource: ProductDataSource;
 
   ngOnInit() {
@@ -50,6 +51,11 @@ export class ProductsComponent implements OnInit {
   });
 
  }
+
+ getImage(pid:number):any{
+  return environment.apiHost+"api/product/getProductImage/"+pid;
+}
+
 
 
 }

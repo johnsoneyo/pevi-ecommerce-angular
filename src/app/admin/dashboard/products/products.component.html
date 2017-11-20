@@ -10,9 +10,14 @@
   
       <!-- Position Column -->
       <ng-container matColumnDef="id">
-        <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef> #. </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
       </ng-container>
+  
+        <ng-container matColumnDef="photo">
+            <mat-header-cell *matHeaderCellDef> <mat-icon>insert_photo</mat-icon> </mat-header-cell>
+            <mat-cell *matCellDef="let element"><img width="120" height="80" [src]="getImage(element.id)"> </mat-cell>
+          </ng-container>
 
       <!-- Name Column -->
       <ng-container matColumnDef="name">
