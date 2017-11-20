@@ -4,7 +4,7 @@
         <mat-tab-group>
             <mat-tab label="Cart Items Checkout">
               <mat-card *ngFor="let order of orders" class="cart-card">
-                <img  class="img-cart" [src]="order.imageUrl" >
+                <img  class="img-cart" [src]="getImage(order.productId)" >
                 <div class="cart-detail">
                   <div>{{order.productName}}</div>
                   <div>{{order.price}}</div>

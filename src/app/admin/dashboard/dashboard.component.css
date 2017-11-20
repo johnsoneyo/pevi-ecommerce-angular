@@ -11,4 +11,20 @@
   }
   
   .example-sidenav {
+    width: 250px;
     }
+
+    .sidenavbar{
+      height: 200px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .sidenavbar img{
+      border-radius: 50%;
+      width:120px;
+      height:120px;
+    }
+
+ 

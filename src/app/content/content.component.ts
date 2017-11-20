@@ -3,7 +3,7 @@ import { Product } from '../product';
 import { ProductService } from '../product.service';
 import { Order } from '../order';
 import {RatingModule} from "ngx-rating";
-import 'rxjs/add/operator/map';
+import { environment } from "../../environments/environment";
 
 @Component({
   selector: 'app-content',
@@ -46,11 +46,8 @@ export class ContentComponent implements OnInit {
   }
 
 
-  getProductImage(pid:number){
-    this.pserve.getProductImage(pid).subscribe(img=>{
-
-    });
-
+  getImage(pid:number):any{
+    return environment.apiHost+"api/product/getProductImage/"+pid;
   }
 
 

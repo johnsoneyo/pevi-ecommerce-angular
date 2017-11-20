@@ -42,13 +42,15 @@ import { LoginService } from './services/login.service';
 import { ProductsComponent } from './admin/dashboard/products/products.component';
 import { CategoriesComponent } from './admin/dashboard/categories/categories.component';
 import { CreateProductComponent } from './admin/dashboard/products/create-product/create-product.component';
-import {MatSelectModule} from '@angular/material';
+import { MatSelectModule } from '@angular/material';
 import { CreateCategoryComponent } from './admin/dashboard/categories/create-category/create-category.component';
+import { OrdersComponent } from './admin/dashboard/orders/orders.component';
 
 const appRoutes: Routes = [{ path: 'login', component: LoginComponent },
 {
   path: 'dashboard', component: DashboardComponent, canActivate: [LoginRouteGuard],
-  children: [{ path: '', component: ProductsComponent }, { path: 'categories', component: CategoriesComponent }]
+  children: [{ path: '', redirectTo: 'products',pathMatch: 'full' },{path:'products',component: ProductsComponent,}, { path: 'categories', component: CategoriesComponent },
+  { path: 'orders', component: OrdersComponent }]
 },
 {
   path: '', component: MainComponent, children: [
@@ -79,9 +81,10 @@ export const appRoutingProviders: any[] = [];
     CategoriesComponent,
     CreateProductComponent,
     CreateCategoryComponent,
+    OrdersComponent
   ],
   entryComponents: [
-    ProcessOrderComponent,CreateProductComponent,CreateCategoryComponent
+    ProcessOrderComponent, CreateProductComponent, CreateCategoryComponent
   ],
   imports: [DropdownModule, StarRatingModule.forRoot(), RouterModule.forRoot(
     appRoutes
@@ -89,7 +92,7 @@ export const appRoutingProviders: any[] = [];
     ReactiveFormsModule, FormsModule, MatDialogModule, MatSliderModule, BrowserModule, MatButtonModule, MatCheckboxModule,
     MatToolbarModule, MatSidenavModule, BrowserAnimationsModule, MatIconModule,
     MatListModule, MatCardModule, MatInputModule, MatTabsModule, MatGridListModule,
-    MatTableModule, HttpModule,MatSelectModule
+    MatTableModule, HttpModule, MatSelectModule
   ],
   providers: [{
     provide: HttpService,

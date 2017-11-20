@@ -9,6 +9,7 @@ import 'rxjs/add/observable/of';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatIconRegistry} from '@angular/material';
 import { ProcessOrderComponent } from '../process-order/process-order.component';
 import { DomSanitizer } from '@angular/platform-browser';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-content-container',
@@ -138,6 +139,11 @@ export class ContentContainerComponent implements OnInit {
     });
 
   }
+
+  getImage(pid:number):any{
+    return environment.apiHost+"api/product/getProductImage/"+pid;
+  }
+
  
 }
 

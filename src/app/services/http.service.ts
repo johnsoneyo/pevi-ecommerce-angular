@@ -25,6 +25,13 @@ post(url: string, body: any, options?: RequestOptionsArgs): Observable<Response>
     return super.post(url, JSON.stringify(body), this.getRequestOptionArgs(options));
 }
 
+postWithImage(url: string, body: any): Observable<Response> {
+    url = this.updateUrl(url);
+    let headers = new Headers(); 
+      let options = new RequestOptions({ headers: headers });
+    return super.post(url, body, options);
+}
+
 put(url: string, body: string, options?: RequestOptionsArgs): Observable<Response> {
     url = this.updateUrl(url);
     return super.put(url, body, this.getRequestOptionArgs(options));

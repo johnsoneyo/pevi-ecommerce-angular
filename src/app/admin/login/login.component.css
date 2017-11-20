@@ -22,3 +22,7 @@
   .example-full-width {
     width: 100%;
   }
+
+  .error-card {
+    margin-top: 20px;
+  }

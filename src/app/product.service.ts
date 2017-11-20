@@ -7,78 +7,88 @@ import { HttpService } from './services/http.service';
 import { Category } from './models/category';
 import { ProductFilter } from './models/product.filter';
 import { Item } from './models/item';
+import { Http,Headers, RequestOptions } from '@angular/http';
+import 'rxjs/add/operator/map';
 
 
 @Injectable()
 export class ProductService {
 
-private subject = new Subject<any>();
-private orderObservable = new Subject<any>();
-private orders:Order[];
+  private subject = new Subject<any>();
+  private orderObservable = new Subject<any>();
+  private orders: Order[];
 
-  constructor(private http:HttpService) {
+
+
+  constructor(private http: HttpService) {
     this.orders = [];
-   }
-
-  setProducthardcoded(products : Product[]){
-     this.subject.next(products);
   }
 
-  getProducts(pageNumber:number):Observable<any>{
-   return this.http.get('api/product/getProducts/'+pageNumber).map(res=>res.json());
+  setProducthardcoded(products: Product[]) {
+    this.subject.next(products);
   }
 
-  getProductsByRange(from:number,to:number):Observable<any>{
-    return this.http.get('api/product/getProductByRange/'+from+'/'+to);
+  getProducts(pageNumber: number): Observable<any> {
+    return this.http.get('api/product/getProducts/' + pageNumber).map(res => res.json());
   }
 
-  getProductsByCategories(cats:ProductFilter):Observable<any>{
-    return this.http.post('api/product/getProductsV2',cats).map(res=>res.json());
+  getProductsByRange(from: number, to: number): Observable<any> {
+    return this.http.get('api/product/getProductByRange/' + from + '/' + to);
   }
 
-  getCategories():Observable<any>{
-    return this.http.get('api/category/getCategories').map(res=> res.json());
+  getProductsByCategories(cats: ProductFilter): Observable<any> {
+    return this.http.post('api/product/getProductsV2', cats).map(res => res.json());
   }
 
-  getBroadcast():Observable<any>{
+  getCategories(): Observable<any> {
+    return this.http.get('api/category/getCategories').map(res => res.json());
+  }
+
+  getBroadcast(): Observable<any> {
     return this.subject.asObservable();
   }
 
-  setOrder(order : Order){
+  setOrder(order: Order) {
     this.orders.push(order);
     this.orderObservable.next(this.orders);
   }
 
 
-  setOrders(orders : Order[]){
+  setOrders(orders: Order[]) {
     this.orders = orders;
     this.orderObservable.next(this.orders);
   }
 
-  getOrdersBroadcast():Observable<any>{
+  getOrdersBroadcast(): Observable<any> {
     return this.orderObservable.asObservable();
   }
 
-  clearOrders():void{
+  clearOrders(): void {
     this.orders = [];
     this.orderObservable.next();
   }
 
 
-  getProductImage(productId:number):Observable<any>{
-    return this.http.get('api/product/getProductImage/'+productId).map(res=>res.json());
+  getProductImage(productId: number): Observable<any> {
+    return this.http.get('api/product/getProductImage/' + productId).map(res => res.json());
+  }
+  
+  
+
+  saveProduct(pdt: FormData): Observable<any> {  
+    return this.http.postWithImage('api/product/saveProductv2', pdt);
   }
 
-  saveProduct(pdt:Item):Observable<any>{
-    return this.http.post('api/product/saveProduct',pdt);
+  modifyProduct(pdt: Item): Observable<any> {
+    return this.http.post('api/product/modifyProduct', pdt);
   }
 
-  modifyProduct(pdt:Item):Observable<any>{
-    return this.http.post('api/product/modifyProduct',pdt);
+  saveCategory(pdt: Category): Observable<any> {
+    return this.http.post('api/category/saveCategory', pdt);
   }
 
-  saveCategory(pdt:Category):Observable<any>{
-    return this.http.post('api/category/saveCategory',pdt);
+  getOrders(pageNo: number): Observable<any> {
+    return this.http.get('api/orders/getOrders/' + pageNo).map(res => res.json());
   }
 
 

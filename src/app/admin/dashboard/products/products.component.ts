@@ -35,7 +35,7 @@ export class ProductsComponent implements OnInit {
 
   openDialog(): void {
     let dialogRef = this.dialog.open(CreateProductComponent, {
-      width: '600px',height:'400px'
+      width: '600px',height:'450px'
     });
 
     dialogRef.afterClosed().subscribe(result => {

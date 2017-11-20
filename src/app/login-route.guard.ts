@@ -11,4 +11,5 @@ export class LoginRouteGuard implements CanActivate {
   canActivate(){
     return this.loginService.isAdminLoggedIn();
   }
+  
 }

@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NavserviceService } from '../../navservice.service';
+import { Router } from '@angular/router';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,30 +11,34 @@ import { NavserviceService } from '../../navservice.service';
 export class DashboardComponent implements OnInit {
 
   @ViewChild("sidenav") sidenav;
-  public isOpen:boolean = false;
-  constructor(private service:NavserviceService) { }
+  public isOpen: boolean;
+  constructor(private service: NavserviceService, private router: Router, private loginserve: LoginService) { }
 
   ngOnInit() {
-    this.service.change.subscribe(data=>{
-      if(!this.isOpen){
-       this.sidenav.open();
-       this.isOpen = true;
-      }else {
-       this.sidenav.close();
-       this.isOpen= false;
+    this.service.change.subscribe(data => {
+      if (!this.isOpen) {
+        this.sidenav.open();
+        this.isOpen = true;
+      } else {
+        this.sidenav.open();
+        this.isOpen = true;
       }
- 
+
     });
   }
 
-  public links = [{"title":"Products ","go":"/"},
-  {"title":"Categories ","go":"categories"},
-  {"title":"Promos ","go":"/promos"}];
+  public links = [{ "title": "Products ", "go": "products" },
+  { "title": "Categories ", "go": "categories" },
+  { "title": "Orders ", "go": "orders" }];
 
-  openMenu(){
+  openMenu() {
     this.service.change.emit();
   }
 
-  
+  logout() {
+    this.loginserve.setLoginStatus(false);
+    this.router.navigate(['/login']);
+  }
+
 
 }

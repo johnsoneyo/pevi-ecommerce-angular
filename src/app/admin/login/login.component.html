@@ -1,19 +1,20 @@
 <div class="login-card-base">
-<mat-card class="login-card">
-    <mat-card-title> </mat-card-title>
+    <mat-card class="login-card">
+        <mat-card-title> </mat-card-title>
         <mat-card-subtitle>Pevi Ecommerce </mat-card-subtitle>
         <mat-card-content>
-            <form class="example-form">
+            <form class="example-form" (ngFocus)="removeCard()" (ngSubmit)="login(loginParam)" [formGroup]="loginParam">
                 <mat-form-field class="example-full-width">
-                  <input matInput placeholder="User ID" >
+                    <input formControlName="loginId" matInput placeholder="User ID">
                 </mat-form-field>
                 <mat-form-field class="example-full-width">
-                    <input matInput type="password" placeholder="Password" value="Sushi">
-                  </mat-form-field>
-                  <button mat-raised-button  color="primary">sign in</button>
-              </form>
-                              
+                    <input formControlName="password" matInput type="password" placeholder="Password" value="Sushi">
+                </mat-form-field>
+                <button mat-raised-button color="primary">sign in</button>
+                <mat-card class="error-card" *ngIf="invalidLogin">Invalid Login Credentials</mat-card>
+            </form>
+
         </mat-card-content>
 
-</mat-card>
+    </mat-card>
 </div>

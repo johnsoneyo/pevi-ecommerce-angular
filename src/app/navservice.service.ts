@@ -6,6 +6,7 @@ export class NavserviceService {
   public updateProducts:EventEmitter<any>  = new EventEmitter<any>();
   public updateCategories:EventEmitter<any>  = new EventEmitter<any>();
   
+  
   constructor() { }
 
  

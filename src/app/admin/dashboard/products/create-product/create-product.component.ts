@@ -4,7 +4,8 @@ import { Item } from '../../../../models/item';
 import { Category } from '../../../../models/category';
 import { ProductService } from '../../../../product.service';
 import { NavserviceService } from '../../../../navservice.service';
-import { MAT_DIALOG_DATA } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { RequestOptions } from '@angular/http';
 
 @Component({
   selector: 'app-create-product',
@@ -14,11 +15,13 @@ import { MAT_DIALOG_DATA } from '@angular/material';
 export class CreateProductComponent implements OnInit {
 
   constructor(private pserve: ProductService, private navServe: NavserviceService,
-    @Inject(MAT_DIALOG_DATA) public data: any) { }
+    @Inject(MAT_DIALOG_DATA) public data: any,private dialogRef: MatDialogRef<CreateProductComponent>) { }
 
   item: FormGroup;
   categories: Category[];
   createMode: boolean;
+  file : File;
+  fileReady: boolean;
 
   ngOnInit() {
 
@@ -56,12 +59,16 @@ export class CreateProductComponent implements OnInit {
   onSubmit({ value, valid }: { value: Item, valid: boolean }) {
 
     if (this.createMode) {
-      this.pserve.saveProduct(value).subscribe(dim => {
+      let formData:FormData = new FormData();
+      formData.append('uploadFile', this.file, this.file.name);
+      formData.append('product',JSON.stringify(value));
+
+      this.pserve.saveProduct(formData).subscribe(dim => {
         this.pserve.getProducts(1).subscribe(dim => {
           this.navServe.updateProducts.emit(dim);
         });
       });
-
+      this.dialogRef.close();
     } else {
 
       this.pserve.modifyProduct(value).subscribe(dim => {
@@ -69,8 +76,15 @@ export class CreateProductComponent implements OnInit {
           this.navServe.updateProducts.emit(dim);
         });
       });
-
+      this.dialogRef.close();
     }
+  }
+
+  fileChange(evt){
+    let fileList:FileList = evt.target.files;
+    this.file = fileList[0];
+    this.fileReady = true;
+    
   }
 
 

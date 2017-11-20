@@ -1,18 +1,28 @@
 import { Injectable } from '@angular/core';
+import { LoginParam } from '../models/login-param';
+import { Observable } from 'rxjs/Observable';
+import { HttpService } from './http.service';
 
 @Injectable()
 export class LoginService {
 
-  constructor() { }
+  constructor(private http: HttpService) { }
 
-  public isLogged:boolean=true;
+  public isLogged: boolean = true;
 
-  isAdminLoggedIn():boolean{
+  isAdminLoggedIn(): boolean {
     return this.isLogged;
   }
 
-  setLoginStatus(isLogged:boolean){
+  attemptLogin(login: LoginParam): Observable<any> {
+    return this.http.post('auth/pvlogin', login);
+  }
+
+  setLoginStatus(isLogged: boolean) {
     this.isLogged = isLogged;
   }
+
+ 
+  
 
 }
