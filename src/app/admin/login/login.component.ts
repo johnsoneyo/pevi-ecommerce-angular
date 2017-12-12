@@ -6,6 +6,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { LoginService } from '../../services/login.service';
 import { NavserviceService } from '../../navservice.service';
 import { Router } from '@angular/router';
+import { NotificationsService} from 'angular4-notify';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -14,11 +16,13 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private serve: LoginService,private router: Router) { }
+  constructor(private serve: LoginService,private router: Router,
+    private _service: NotificationsService,private toastr : ToastrService) { }
 
 
   loginParam: FormGroup;
   invalidLogin: boolean = false;
+ 
 
   ngOnInit() {
    
@@ -35,10 +39,14 @@ export class LoginComponent implements OnInit {
       if (suc.status == 200) {
           this.serve.setLoginStatus(true);
           this.router.navigate(['/dashboard']);
+          this.serve.setPreviousURL('/login');
       }
     }, res => {
-      if (res.status == 403) {
-           this.invalidLogin = true;
+      if (res.status >= 400) {
+          this.toastr.info('Invalid user ', 'please check your cred!',{
+             closeButton : true,progressBar: true,progressAnimation : 'increasing'
+          });
+           
          }
 
     });
@@ -48,5 +56,6 @@ export class LoginComponent implements OnInit {
     this.invalidLogin = false;
   }
 
+  
 
 }

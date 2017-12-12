@@ -91,6 +91,9 @@ export class ProductService {
     return this.http.get('api/orders/getOrders/' + pageNo).map(res => res.json());
   }
 
+  suspendProduct(productId:number):Observable<any>{
+    return this.http.get('api/product/toggleState/'+productId);
+  }
 
 
 }

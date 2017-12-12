@@ -8,7 +8,8 @@ export class LoginService {
 
   constructor(private http: HttpService) { }
 
-  public isLogged: boolean = true;
+  public isLogged: boolean = false;
+  previousURL:string;
 
   isAdminLoggedIn(): boolean {
     return this.isLogged;
@@ -21,6 +22,15 @@ export class LoginService {
   setLoginStatus(isLogged: boolean) {
     this.isLogged = isLogged;
   }
+
+  setPreviousURL(url:string): void{
+    this.previousURL = url;
+  }
+
+  getPreviousURL(): string{
+     return this.previousURL;
+  }
+
 
  
   

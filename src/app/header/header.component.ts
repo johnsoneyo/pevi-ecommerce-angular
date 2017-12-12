@@ -11,6 +11,8 @@ import { MatIconRegistry } from '@angular/material';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+
+  isCollaped:boolean;
  
   @Input()
   lightIcon = 'cartGrill';
@@ -25,7 +27,7 @@ export class HeaderComponent implements OnInit {
   constructor(private service: NavserviceService,private pserv: ProductService,
     private matIconRegistry: MatIconRegistry,
     sanitizer: DomSanitizer) { 
-
+      this.isCollaped = true;
       matIconRegistry
       .addSvgIcon('cartGrill',
       sanitizer.bypassSecurityTrustResourceUrl('assets/images/Cartgrill.svg'))
@@ -49,6 +51,18 @@ export class HeaderComponent implements OnInit {
 
   open(){
     this.service.change.emit();   
+  }
+
+  startSearch():void{
+
+  }
+
+  toggleNav():void{
+     if(this.isCollaped){
+       this.isCollaped = false;
+     }else if(!this.isCollaped){
+       this.isCollaped = true;
+     }
   }
 
 }

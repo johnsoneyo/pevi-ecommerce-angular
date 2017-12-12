@@ -40,7 +40,15 @@
       <ng-container matColumnDef="actions">
         <mat-header-cell *matHeaderCellDef> Manage </mat-header-cell>
         <mat-cell *matCellDef="let element">
-            <button mat-button (click)=editDialog(element) color="primary">modify </button>  
+            <button mat-icon-button (click)=editDialog(element) color="primary">
+                <mat-icon aria-label="edit">create</mat-icon> </button>  
+            <button mat-icon-button (click)=suspendProduct(element) [color]="element.active ? 'primary':'warn' ">
+                <mat-icon aria-label="suspend">block</mat-icon>  
+            </button>
+            <button mat-icon-button (click)=suspendProduct(element) color="primary">
+                <mat-icon aria-label="remove">remove_circle</mat-icon>  
+            </button> 
+           
         </mat-cell>
       </ng-container>
   

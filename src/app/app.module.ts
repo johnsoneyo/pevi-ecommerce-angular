@@ -45,6 +45,16 @@ import { CreateProductComponent } from './admin/dashboard/products/create-produc
 import { MatSelectModule } from '@angular/material';
 import { CreateCategoryComponent } from './admin/dashboard/categories/create-category/create-category.component';
 import { OrdersComponent } from './admin/dashboard/orders/orders.component';
+import {NotificationsModule, NotificationsService} from 'angular4-notify';
+import { CarouselModule } from 'angular4-carousel';
+import { NbThemeModule, NbSearchModule, NbActionsModule, NbSearchService, NbLayoutModule } from '@nebular/theme';
+import { ThemifyModule } from 'ngx-icons';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
+import { ToastrModule, ToastNoAnimationModule, ToastNoAnimation } from 'ngx-toastr';
+import { CommonModule } from '@angular/common';
+
+
 
 const appRoutes: Routes = [{ path: 'login', component: LoginComponent },
 {
@@ -86,19 +96,22 @@ export const appRoutingProviders: any[] = [];
   entryComponents: [
     ProcessOrderComponent, CreateProductComponent, CreateCategoryComponent
   ],
-  imports: [DropdownModule, StarRatingModule.forRoot(), RouterModule.forRoot(
+  imports: [DropdownModule,NotificationsModule, StarRatingModule.forRoot(),
+    NbThemeModule.forRoot({ name: 'default' }), RouterModule.forRoot(
     appRoutes
   ),
-    ReactiveFormsModule, FormsModule, MatDialogModule, MatSliderModule, BrowserModule, MatButtonModule, MatCheckboxModule,
+  CarouselModule,CommonModule,ToastrModule.forRoot( {toastComponent: ToastNoAnimation}),
+  ToastNoAnimationModule,
+   ReactiveFormsModule,ThemifyModule,NbActionsModule,NbSearchModule, FormsModule, MatDialogModule, MatSliderModule, BrowserModule, MatButtonModule, MatCheckboxModule,
     MatToolbarModule, MatSidenavModule, BrowserAnimationsModule, MatIconModule,
     MatListModule, MatCardModule, MatInputModule, MatTabsModule, MatGridListModule,
-    MatTableModule, HttpModule, MatSelectModule
+    MatTableModule, HttpModule, MatSelectModule,NbLayoutModule,NgbModule.forRoot()
   ],
   providers: [{
     provide: HttpService,
     useFactory: httpFactory,
     deps: [XHRBackend, RequestOptions]
-  }, NavserviceService, ProductService, OrderService, LoginRouteGuard, LoginService],
+  }, NavserviceService, ProductService, NbSearchService,OrderService, LoginRouteGuard, LoginService,NotificationsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
