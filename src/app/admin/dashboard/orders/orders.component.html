@@ -1,61 +1,56 @@
 <div class="ccontainer">
-    <mat-toolbar color="primary">Customer Order Management</mat-toolbar>
+  <mat-toolbar color="primary">Customer Order Management</mat-toolbar>
   <div class="example-container mat-elevation-z8">
-      <mat-table #table [dataSource]="dataSource">
-    
-        <!--- Note that these columns can be defined in any order.
+    <mat-table #table [dataSource]="dataSource">
+
+      <!--- Note that these columns can be defined in any order.
               The actual rendered columns are set as a property on the row definition" -->
-    
-        <!-- Position Column -->
-        <ng-container matColumnDef="id">
-          <mat-header-cell *matHeaderCellDef> Order ID </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
-        </ng-container>
 
-          <!-- Weight Column -->
-          <ng-container matColumnDef="productName">
-              <mat-header-cell *matHeaderCellDef> Product Name </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element.productId.name}} </mat-cell>
-            </ng-container>
+      <!-- Position Column -->
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef> Order ID </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+      </ng-container>
 
-             <!-- Weight Column -->
-        <ng-container matColumnDef="quantity">
-            <mat-header-cell *matHeaderCellDef> Quantity </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.quantity}} </mat-cell>
-          </ng-container>
+      <ng-container matColumnDef="invId">
+        <mat-header-cell *matHeaderCellDef> Invoice ID </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.invId}} </mat-cell>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="fname">
+        <mat-header-cell *matHeaderCellDef> Customer Name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.fname}} </mat-cell>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="productName">
+        <mat-header-cell *matHeaderCellDef> Product Name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.productId.name}} </mat-cell>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="quantity">
+        <mat-header-cell *matHeaderCellDef> Quantity </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.quantity}} </mat-cell>
+      </ng-container>
 
 
-          <ng-container matColumnDef="timeCreated">
-              <mat-header-cell *matHeaderCellDef> Time entered </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element.timeCreated}} </mat-cell>
-            </ng-container>
+      <ng-container matColumnDef="timeCreated">
+        <mat-header-cell *matHeaderCellDef> Time entered </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.timeCreated}} </mat-cell>
+      </ng-container>
 
-              <!-- Name Column -->
-        <ng-container matColumnDef="fname">
-            <mat-header-cell *matHeaderCellDef> Customer Name </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.fname}} </mat-cell>
-          </ng-container>
-  
-        <!-- Name Column -->
-        <ng-container matColumnDef="paid">
-          <mat-header-cell *matHeaderCellDef> Has paid </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.paid}} </mat-cell>
-        </ng-container>
-    
-       
-       
-    
-  
-        <ng-container matColumnDef="actions">
-          <mat-header-cell *matHeaderCellDef> Manage </mat-header-cell>
-          <mat-cell *matCellDef="let element">
-              <button mat-button (click)=editDialog(element) color="primary">modify </button>  
-          </mat-cell>
-        </ng-container>
-    
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-      </mat-table>
-    </div>
-    
- </div>
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef> Manage </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <button mat-button (click)=editDialog(element) color="primary">modify </button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </div>
+
+</div>

@@ -11,7 +11,7 @@ export class OrdersComponent implements OnInit {
 
   constructor(private service: ProductService) { }
 
-  displayedColumns = ['id', 'paid', 'quantity', 'productName','timeCreated','fname'];
+  displayedColumns = ['id','invId',,'fname', 'quantity', 'productName','timeCreated'];
   dataSource: OrderDatasource;
 
   ngOnInit() {

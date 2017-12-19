@@ -29,7 +29,9 @@ export class DashboardComponent implements OnInit {
 
   public links = [{ "title": "Products ", "go": "products" },
   { "title": "Categories ", "go": "categories" },
-  { "title": "Orders ", "go": "orders" }];
+  { "title": "Orders ", "go": "orders" },
+  { "title": "Invoices ", "go": "invoices" },
+];
 
   openMenu() {
     this.service.change.emit();

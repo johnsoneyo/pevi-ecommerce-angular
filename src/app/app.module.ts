@@ -53,6 +53,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { ToastrModule, ToastNoAnimationModule, ToastNoAnimation } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
+import { InvoiceComponent } from './admin/dashboard/invoice/invoice.component';
 
 
 
@@ -60,7 +61,7 @@ const appRoutes: Routes = [{ path: 'login', component: LoginComponent },
 {
   path: 'dashboard', component: DashboardComponent, canActivate: [LoginRouteGuard],
   children: [{ path: '', redirectTo: 'products',pathMatch: 'full' },{path:'products',component: ProductsComponent,}, { path: 'categories', component: CategoriesComponent },
-  { path: 'orders', component: OrdersComponent }]
+  { path: 'orders', component: OrdersComponent },{ path: 'invoices', component: InvoiceComponent }]
 },
 {
   path: '', component: MainComponent, children: [
@@ -91,7 +92,8 @@ export const appRoutingProviders: any[] = [];
     CategoriesComponent,
     CreateProductComponent,
     CreateCategoryComponent,
-    OrdersComponent
+    OrdersComponent,
+    InvoiceComponent
   ],
   entryComponents: [
     ProcessOrderComponent, CreateProductComponent, CreateCategoryComponent

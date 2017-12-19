@@ -2,7 +2,7 @@ import { Item } from "./item";
 
 export class AnonymousOrder {
     id: number;
-    paid : boolean;
+    invId: number;
     quantity: number;
     timeCreated : Date;
     productId  : Item;

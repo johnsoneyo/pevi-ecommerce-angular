@@ -95,5 +95,9 @@ export class ProductService {
     return this.http.get('api/product/toggleState/'+productId);
   }
 
+  getInvoices(pageNo: number): Observable<any> {
+    return this.http.get('api/invoices/getInvoices/' + pageNo).map(res => res.json());
+  }
+
 
 }

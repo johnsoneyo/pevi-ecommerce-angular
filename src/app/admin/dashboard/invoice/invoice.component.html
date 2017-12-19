@@ -1,0 +1,45 @@
+<div class="ccontainer">
+  <mat-toolbar color="primary">Invoice Management</mat-toolbar>
+<div class="example-container mat-elevation-z8">
+    <mat-table #table [dataSource]="dataSource">
+  
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+  
+      <!-- Position Column -->
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef> Invoice ID </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+      </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="alias">
+            <mat-header-cell *matHeaderCellDef> Alias </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.alias}} </mat-cell>
+          </ng-container>
+
+           <!-- Weight Column -->
+      <ng-container matColumnDef="paid">
+          <mat-header-cell *matHeaderCellDef> Paid </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.paid}} </mat-cell>
+        </ng-container>
+
+
+        <ng-container matColumnDef="ordersCount">
+            <mat-header-cell *matHeaderCellDef> No of Orders </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.ordersCount}} </mat-cell>
+          </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef> Manage </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+            <button mat-button (click)=editDialog(element) color="primary">modify </button>  
+        </mat-cell>
+      </ng-container>
+  
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </div>
+  
+</div>
