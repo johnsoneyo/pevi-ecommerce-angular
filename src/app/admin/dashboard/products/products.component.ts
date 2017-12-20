@@ -51,6 +51,7 @@ export class ProductsComponent implements OnInit {
         this.toastr.success('Welcome ','Hello World',{positionClass: 'toast-top-left'});
       } 
       }, 3000)
+      this.log.setPreviousURL('/products');
      
 
   }

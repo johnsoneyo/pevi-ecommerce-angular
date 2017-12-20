@@ -26,8 +26,11 @@ export class ContentContainerComponent implements OnInit {
   @Input()
   cartCheckout = 'checkout';
 
+ 
+
   public orders: Order[];
   public total:number = 0.0;
+  public loading: boolean = false;
   
   constructor(private service: NavserviceService,
     private serve :ProductService,public dialog: MatDialog, private matIconRegistry: MatIconRegistry,
@@ -51,6 +54,12 @@ export class ContentContainerComponent implements OnInit {
       this.isOpen= false;
      }
 
+   });
+
+
+   this.service.loader.subscribe(data=>{
+     this.loading = true;
+     setTimeout(()=>{this.loading = false;},2000);
    });
 
    this.serve.getOrdersBroadcast().subscribe(data=>{

@@ -45,7 +45,9 @@
   </mat-sidenav>
  
    <div class="my-content">
-    <app-sidebar class="sidebar"></app-sidebar>
+      <ngx-loading  [show]="loading" [config]="{ backdropBorderRadius: '0px' }"></ngx-loading>
+      
+   <app-sidebar class="sidebar"></app-sidebar>
     <app-content class="content-inner"></app-content>
   </div>
   

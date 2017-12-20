@@ -6,7 +6,6 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { LoginService } from '../../services/login.service';
 import { NavserviceService } from '../../navservice.service';
 import { Router } from '@angular/router';
-import { NotificationsService} from 'angular4-notify';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -17,7 +16,7 @@ import { ToastrService } from 'ngx-toastr';
 export class LoginComponent implements OnInit {
 
   constructor(private serve: LoginService,private router: Router,
-    private _service: NotificationsService,private toastr : ToastrService) { }
+   private toastr : ToastrService) { }
 
 
   loginParam: FormGroup;

@@ -59,7 +59,6 @@ lightIcon = 'green';
       let pf = new ProductFilter();
       pf.categories = catInt;
       this.pserve.getProductsByCategories(pf).subscribe(data=>{
-        console.log(data);
         this.pserve.setProducthardcoded(data);
       });
     }

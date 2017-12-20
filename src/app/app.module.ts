@@ -45,15 +45,14 @@ import { CreateProductComponent } from './admin/dashboard/products/create-produc
 import { MatSelectModule } from '@angular/material';
 import { CreateCategoryComponent } from './admin/dashboard/categories/create-category/create-category.component';
 import { OrdersComponent } from './admin/dashboard/orders/orders.component';
-import {NotificationsModule, NotificationsService} from 'angular4-notify';
 import { CarouselModule } from 'angular4-carousel';
 import { NbThemeModule, NbSearchModule, NbActionsModule, NbSearchService, NbLayoutModule } from '@nebular/theme';
-import { ThemifyModule } from 'ngx-icons';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-
-import { ToastrModule, ToastNoAnimationModule, ToastNoAnimation } from 'ngx-toastr';
+import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
+import { ToastrModule} from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
 import { InvoiceComponent } from './admin/dashboard/invoice/invoice.component';
+import { LoadingModule } from 'ngx-loading';
 
 
 
@@ -98,13 +97,12 @@ export const appRoutingProviders: any[] = [];
   entryComponents: [
     ProcessOrderComponent, CreateProductComponent, CreateCategoryComponent
   ],
-  imports: [DropdownModule,NotificationsModule, StarRatingModule.forRoot(),
+  imports: [DropdownModule, StarRatingModule.forRoot(),Ng4LoadingSpinnerModule,
     NbThemeModule.forRoot({ name: 'default' }), RouterModule.forRoot(
     appRoutes
-  ),
-  CarouselModule,CommonModule,ToastrModule.forRoot( {toastComponent: ToastNoAnimation}),
-  ToastNoAnimationModule,
-   ReactiveFormsModule,ThemifyModule,NbActionsModule,NbSearchModule, FormsModule, MatDialogModule, MatSliderModule, BrowserModule, MatButtonModule, MatCheckboxModule,
+  ),LoadingModule,
+  CarouselModule,CommonModule,ToastrModule.forRoot(),
+   ReactiveFormsModule,NbActionsModule,NbSearchModule, FormsModule, MatDialogModule, MatSliderModule, BrowserModule, MatButtonModule, MatCheckboxModule,
     MatToolbarModule, MatSidenavModule, BrowserAnimationsModule, MatIconModule,
     MatListModule, MatCardModule, MatInputModule, MatTabsModule, MatGridListModule,
     MatTableModule, HttpModule, MatSelectModule,NbLayoutModule,NgbModule.forRoot()
@@ -113,7 +111,7 @@ export const appRoutingProviders: any[] = [];
     provide: HttpService,
     useFactory: httpFactory,
     deps: [XHRBackend, RequestOptions]
-  }, NavserviceService, ProductService, NbSearchService,OrderService, LoginRouteGuard, LoginService,NotificationsService],
+  }, NavserviceService, ProductService, NbSearchService,OrderService, LoginRouteGuard, LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { Product } from '../product';
 import { ProductService } from '../product.service';
 import { Order } from '../order';
 import {RatingModule} from "ngx-rating";
 import { environment } from "../../environments/environment";
+import { EventEmitter } from '@angular/core';
+import { NavserviceService } from '../navservice.service';
 
 @Component({
   selector: 'app-content',
@@ -15,15 +17,20 @@ export class ContentComponent implements OnInit {
 
   products: Product[];
   
-  constructor(private pserve: ProductService) { 
+
+  constructor(private pserve: ProductService,private nav: NavserviceService) { 
      
   }
+
+  
 
   ngOnInit() {
 
     this.pserve.getProducts(1)
     .subscribe(data=>{
+      this.nav.loader.emit(true);
       this.products = data;
+    
     });
 
     this.pserve.getBroadcast().subscribe(data=>{
