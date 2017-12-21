@@ -1,6 +1,60 @@
 .example-card {
     width: 300px;
     margin: 10px;
-     margin-top: 50px;
+    margin-top: 50px;
+    display:inline-block;
+    position:relative;
+    overflow:hidden;
   }
+
+
+
+.card_overlay{
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, .5);
+  padding: 20px;
+  margin: 0 auto;
+  top:-100%;
+  left: 5%;
+  position: absolute;
+  transition:.6s;
+}
+.card_overlay h6{
+  text-transform:uppercase;
+  color:#fff;
+  font-size:2rem;
+  line-height:2.575rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.card_overlay p.product_price{
+  font-size:2.5725rem;
+  color:#fff;
+  line-height:3rem;
+}
+.pcard_overlay .btn{
+  margin-top: 25px;
+}
   
+
+.btn-primary {
+  background-color: #E7A331;
+  color: #ffffff;
+  border: 2px solid #E7A331;
+  text-transform: uppercase;
+  border-radius: 4px;
+}
+.btn-primary:hover {
+  background-color: #d6962c;
+  border-color: #d6962c;
+  color: #fff;
+}
+
+
+.example-card:hover .card_overlay{
+  top:0%;
+  left: 0%;
+}

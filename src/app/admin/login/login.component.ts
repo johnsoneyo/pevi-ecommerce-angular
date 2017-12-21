@@ -15,16 +15,16 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private serve: LoginService,private router: Router,
-   private toastr : ToastrService) { }
+  constructor(private serve: LoginService, private router: Router,
+    private toastr: ToastrService) { }
 
 
   loginParam: FormGroup;
   invalidLogin: boolean = false;
- 
+
 
   ngOnInit() {
-   
+
     this.loginParam = new FormGroup({
       loginId: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required)
@@ -36,25 +36,29 @@ export class LoginComponent implements OnInit {
   login({ value, valid }: { value: LoginParam, valid: boolean }): void {
     this.serve.attemptLogin(value).subscribe(suc => {
       if (suc.status == 200) {
-          this.serve.setLoginStatus(true);
-          this.router.navigate(['/dashboard']);
-          this.serve.setPreviousURL('/login');
+        this.serve.setLoginStatus(true);
+        this.router.navigate(['/dashboard']);
+        this.serve.setPreviousURL('/login');
       }
     }, res => {
       if (res.status >= 400) {
-          this.toastr.info('Invalid user ', 'please check your cred!',{
-             closeButton : true,progressBar: true,progressAnimation : 'increasing'
-          });
-           
-         }
+        this.toastr.info('invalid user ', 'please check your cred!', {
+          closeButton: true, progressBar: true, progressAnimation: 'increasing'
+        });
+
+      } else if (res.status == 0){
+        this.toastr.error( 'call jonson on 07088812651!','server not available ', {
+          closeButton: true, progressBar: true, progressAnimation: 'increasing'
+        });
+      }
 
     });
   }
 
-  removeCard(){
+  removeCard() {
     this.invalidLogin = false;
   }
 
-  
+
 
 }

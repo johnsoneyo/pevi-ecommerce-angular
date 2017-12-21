@@ -1,54 +1,53 @@
 <mat-sidenav-container>
-  
-  <mat-sidenav align="end" #sidenav  mode="side" >
-        <mat-tab-group>
-            <mat-tab label="Cart Items Checkout">
-              <mat-card *ngFor="let order of orders" class="cart-card">
-                <img width="200" height="130"  class="img-cart" [src]="getImage(order.productId)" >
-                <div class="cart-detail">
-                  <div>{{order.productName}}</div>
-                  <div>{{order.price}}</div>
-                  <div>Quantity : {{order.quantity}}</div>
-                 
-                  <div> 
-                  <button (click)="addQuantity(order)" mat-icon-button>
-                    <mat-icon>add</mat-icon>
-                  </button>
-                  <button  (click)="removeQuantity(order)" mat-icon-button>
-                      <mat-icon>remove</mat-icon>
-                    </button>
-                  <div>Sub-total : &#8358;{{order.price*order.quantity}}</div>
-                </div>
-                </div>
-              
-                <button  (click)="removeOrder(order)" mat-icon-button>
-                  <mat-icon>close</mat-icon>
-                </button>
-              </mat-card>
-           
-            <div class="total-block">
-               <button [disabled]="total==0" (click)="clearCart()" mat-raised-button color="primary">Clear Items</button>
-               <button [disabled]="total==0" (click)="processOrder()" mat-raised-button color="accent">Checkout</button>
-               <span *ngIf="total>0">{{total}}</span>
-            </div>
-         
-            
-            </mat-tab>
-            <mat-tab label="Login">
-              
-                  
 
-            </mat-tab>
-          </mat-tab-group>
-      
-      
+  <mat-sidenav align="end" #sidenav mode="side">
+    <mat-tab-group>
+      <mat-tab label="Cart Items Checkout">
+        <mat-card *ngFor="let order of orders" class="cart-card">
+          <img width="200" height="130" class="img-cart" [src]="getImage(order.productId)">
+          <div class="cart-detail">
+            <div>{{order.productName}}</div>
+            <div>{{order.price}}</div>
+            <div>Quantity : {{order.quantity}}</div>
+
+            <div>
+              <button (click)="addQuantity(order)" mat-icon-button>
+                <mat-icon>add</mat-icon>
+              </button>
+              <button (click)="removeQuantity(order)" mat-icon-button>
+                <mat-icon>remove</mat-icon>
+              </button>
+              <div>Sub-total : &#8358;{{order.price*order.quantity}}</div>
+            </div>
+          </div>
+
+          <button (click)="removeOrder(order)" mat-icon-button>
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-card>
+
+        <div class="total-block">
+          <button [disabled]="total==0" (click)="clearCart()" mat-raised-button color="primary">Clear Items</button>
+          <button [disabled]="total==0" (click)="processOrder()" mat-raised-button color="accent">Checkout</button>
+          <span *ngIf="total>0">{{total}}</span>
+        </div>
+
+
+      </mat-tab>
+      <mat-tab label="Login">
+
+
+
+      </mat-tab>
+    </mat-tab-group>
+
+
   </mat-sidenav>
- 
-   <div class="my-content">
-      <ngx-loading  [show]="loading" [config]="{ backdropBorderRadius: '0px' }"></ngx-loading>
-      
-   <app-sidebar class="sidebar"></app-sidebar>
+
+  <div class="my-content">
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '0px' }"></ngx-loading>
+    <app-sidebar class="sidebar"></app-sidebar>
     <app-content class="content-inner"></app-content>
   </div>
-  
+
 </mat-sidenav-container>
