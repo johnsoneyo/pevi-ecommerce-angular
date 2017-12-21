@@ -48,11 +48,11 @@ import { OrdersComponent } from './admin/dashboard/orders/orders.component';
 import { CarouselModule } from 'angular4-carousel';
 import { NbThemeModule, NbSearchModule, NbActionsModule, NbSearchService, NbLayoutModule } from '@nebular/theme';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 import { ToastrModule} from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
 import { InvoiceComponent } from './admin/dashboard/invoice/invoice.component';
 import { LoadingModule } from 'ngx-loading';
+import { UserComponent } from './admin/dashboard/user/user.component';
 
 
 
@@ -92,12 +92,13 @@ export const appRoutingProviders: any[] = [];
     CreateProductComponent,
     CreateCategoryComponent,
     OrdersComponent,
-    InvoiceComponent
+    InvoiceComponent,
+    UserComponent
   ],
   entryComponents: [
     ProcessOrderComponent, CreateProductComponent, CreateCategoryComponent
   ],
-  imports: [DropdownModule, StarRatingModule.forRoot(),Ng4LoadingSpinnerModule,
+  imports: [DropdownModule, StarRatingModule.forRoot(),
     NbThemeModule.forRoot({ name: 'default' }), RouterModule.forRoot(
     appRoutes
   ),LoadingModule,
